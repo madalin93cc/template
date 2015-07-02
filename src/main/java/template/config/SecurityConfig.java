@@ -6,6 +6,9 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.csrf.CsrfFilter;
+import org.springframework.security.web.csrf.CsrfTokenRepository;
+import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 
 import javax.sql.DataSource;
 
@@ -40,10 +43,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     * Configurare restrictionare rute in functie de url si rolul utilizatorului
     * TODO in functie de necesitatile aplicatiei
     * */
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .anyRequest().permitAll().and().csrf().disable();
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http.authorizeRequests()
+//                .antMatchers("/login").permitAll()
+//                .anyRequest().authenticated()
+//                .and().formLogin().loginPage("/login").and().csrf();
 //                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
 //                .and()
 //                .formLogin().loginPage("/login").failureUrl("/login?error")
@@ -54,5 +59,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .exceptionHandling().accessDeniedPage("/403")
 //                .and()
 //                .csrf();
-    }
+//    }
 }
