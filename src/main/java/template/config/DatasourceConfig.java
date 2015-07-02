@@ -24,7 +24,7 @@ import java.util.Properties;
 @EnableJpaRepositories(basePackages = "template.repository")
 @EnableTransactionManagement
 //@ComponentScan(basePackages = "schedulingsystem")
-public class DatasorceConfig {
+public class DatasourceConfig {
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws SQLException {
