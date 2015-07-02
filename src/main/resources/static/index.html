@@ -14,8 +14,11 @@
 <div class="container">
     <h1>Greeting</h1>
     <div ng-controller="home" ng-cloak class="ng-cloak">
-        <p>The ID is {{greeting.id}}</p>
-        <p>The content is {{greeting.content}}</p>
+        Nume: <input ng-model="personDTO.firstName"><br>
+        Prenume: <input ng-model="personDTO.lastName"><br>
+        Numar masini: <input ng-model="personDTO.numberOfCars"><br>
+        Data nasterii: <input ng-model="personDTO.dateOfBirth", type="date"><br>
+        <button ng-click="addPerson()">Adauga</button>
     </div>
 </div>
 <!--<script src="js/angular-bootstrap.js" type="text/javascript"></script>-->
