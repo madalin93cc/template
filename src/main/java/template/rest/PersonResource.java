@@ -17,7 +17,7 @@ public class PersonResource {
     @Inject
     PersonService personService;
 
-    @RequestMapping(value = RequestMappings.GET_USER_BY_FIRST_NAME, method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = RequestMappings.EXAMPLE_MAPPING, method = RequestMethod.GET, produces = "application/json")
     public Person getPersonByFirstName(@PathVariable("firstName") String firstName){
         return personService.getPersonByFirstName(firstName);
     }

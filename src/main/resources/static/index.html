@@ -1,7 +1,8 @@
 <!doctype html>
 <html>
 <head>
-    <title>Hello AngularJS</title>
+    <title>Template appliaction</title>
+    <!-- include CSS-->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
         [ng\:cloak], [ng-cloak], .ng-cloak {
@@ -9,24 +10,26 @@
         }
     </style>
 </head>
-
+<!-- Angular app-->
 <body ng-app="app-name">
 <div class="container">
-    <h1>Greeting</h1>
-    <div ng-controller="home" ng-cloak class="ng-cloak">
-        Nume: <input ng-model="personDTO.firstName"><br>
-        Prenume: <input ng-model="personDTO.lastName"><br>
-        Numar masini: <input ng-model="personDTO.numberOfCars"><br>
-        Data nasterii: <input ng-model="personDTO.dateOfBirth", type="date"><br>
-        <button ng-click="addPerson()">Adauga</button>
+    <h1>Main page</h1>
+    <div ng-view ng-cloak class="ng-cloak">
+
     </div>
 </div>
-<!--<script src="js/angular-bootstrap.js" type="text/javascript"></script>-->
+<!-- include bower Js components-->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/angular-route/angular-route.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- include local Js components-->
+<!-- Angular app-->
 <script src="js/app.js"></script>
-<script src="js/home-controller.js"></script>
+<!-- Angular route-->
+<script src="js/config/routeConfig.js"></script>
+<!-- Angular controllers-->
+<script src="js/controllers/homeController.js"></script>
+<!-- Angular services-->
 </body>
 </html>

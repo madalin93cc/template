@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * Created by Madalin.Colezea on 7/2/2015.
  * Entitata ce se mapeaza pe tabele PERSON din baza de data
- * si are campurile fitst_name, last_name, number_of_cars, date_of_birth
+ * si are campurile fitst_name, last_name
  */
 @Entity
 @Table(name = "PERSON")
@@ -22,20 +22,12 @@ public class Person implements BaseEntity{
     @Column(name = "LAST_NAME", length = 30, nullable = false)
     private String lastName;
 
-    @Column(name = "NUMBER_OF_CARS", nullable = false)
-    private Integer numberOfCars;
-
-    @Column(name = "DATE_OF_BIRTH")
-    private Date dateOfBirth;
-
     public Person() {
     }
 
-    public Person(String firstName, String lastName, Integer numberOfCars, Date dateOfBirth) {
+    public Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.numberOfCars = numberOfCars;
-        this.dateOfBirth = dateOfBirth;
     }
 
     @Override
@@ -64,44 +56,24 @@ public class Person implements BaseEntity{
         this.lastName = lastName;
     }
 
-    public Integer getNumberOfCars() {
-        return numberOfCars;
-    }
-
-    public void setNumberOfCars(Integer numberOfCars) {
-        this.numberOfCars = numberOfCars;
-    }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Person)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         Person person = (Person) o;
 
-        if (!id.equals(person.id)) return false;
-        if (!firstName.equals(person.firstName)) return false;
-        if (!lastName.equals(person.lastName)) return false;
-        if (!numberOfCars.equals(person.numberOfCars)) return false;
-        return !(dateOfBirth != null ? !dateOfBirth.equals(person.dateOfBirth) : person.dateOfBirth != null);
+        if (id != null ? !id.equals(person.id) : person.id != null) return false;
+        if (firstName != null ? !firstName.equals(person.firstName) : person.firstName != null) return false;
+        return !(lastName != null ? !lastName.equals(person.lastName) : person.lastName != null);
 
     }
 
     @Override
     public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + firstName.hashCode();
-        result = 31 * result + lastName.hashCode();
-        result = 31 * result + numberOfCars.hashCode();
-        result = 31 * result + (dateOfBirth != null ? dateOfBirth.hashCode() : 0);
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         return result;
     }
 }

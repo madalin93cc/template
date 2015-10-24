@@ -20,29 +20,19 @@ public class PersonDTO implements Serializable {
     @JsonProperty(value = "lastName")
     private String lastName;
 
-    @JsonProperty(value = "numberOfCars")
-    private Integer numberOfCars;
-
-    @JsonProperty(value = "dateOfBirth")
-    private Date dateOfBirth;
-
     public PersonDTO() {
     }
 
-    public PersonDTO(Long id, String firstName, String lastName, Integer numberOfCars, Date dateOfBirth) {
+    public PersonDTO(Long id, String firstName, String lastName) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.numberOfCars = numberOfCars;
-        this.dateOfBirth = dateOfBirth;
     }
 
     public PersonDTO(Person person){
         this.id = person.getId();
         this.firstName = person.getFirstName();
         this.lastName = person.getLastName();
-        this.numberOfCars = person.getNumberOfCars();
-        this.dateOfBirth = person.getDateOfBirth();
     }
 
     public Person toEntity(Person person){
@@ -74,44 +64,24 @@ public class PersonDTO implements Serializable {
         this.lastName = lastName;
     }
 
-    public Integer getNumberOfCars() {
-        return numberOfCars;
-    }
-
-    public void setNumberOfCars(Integer numberOfCars) {
-        this.numberOfCars = numberOfCars;
-    }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof PersonDTO)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         PersonDTO personDTO = (PersonDTO) o;
 
-        if (!id.equals(personDTO.id)) return false;
-        if (!firstName.equals(personDTO.firstName)) return false;
-        if (!lastName.equals(personDTO.lastName)) return false;
-        if (!numberOfCars.equals(personDTO.numberOfCars)) return false;
-        return !(dateOfBirth != null ? !dateOfBirth.equals(personDTO.dateOfBirth) : personDTO.dateOfBirth != null);
+        if (id != null ? !id.equals(personDTO.id) : personDTO.id != null) return false;
+        if (firstName != null ? !firstName.equals(personDTO.firstName) : personDTO.firstName != null) return false;
+        return !(lastName != null ? !lastName.equals(personDTO.lastName) : personDTO.lastName != null);
 
     }
 
     @Override
     public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + firstName.hashCode();
-        result = 31 * result + lastName.hashCode();
-        result = 31 * result + numberOfCars.hashCode();
-        result = 31 * result + (dateOfBirth != null ? dateOfBirth.hashCode() : 0);
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         return result;
     }
 }
